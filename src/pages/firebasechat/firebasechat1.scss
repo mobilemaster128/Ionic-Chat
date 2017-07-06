@@ -1,0 +1,118 @@
+page-firebasechat1 {
+    .toolbar-background {
+        //background: transparent !important;
+    }
+    .firechat.content {
+        background-image: url('../assets/img/chat_bg.png');
+        background-size: cover;
+    }
+    .firechat.content .scroll-content {
+        background-color: transparent;
+    }
+    .receivers {
+        margin: 4px 8px;
+        height: 30px;
+    }
+    .receivers ion-chip {
+        height: 24px;
+        line-height: 24px;
+        margin: 0px 2px;
+        color: #3498db;
+    }
+    ion-footer .typings {
+        background: transparent;
+    }
+    ion-footer.chat-inputer {
+        background: white;
+    }
+    ion-footer.chat-inputer .inputer {
+        background: transparent;
+        margin: 0px;
+        padding: 0px 0px 0px 8px;
+    }
+    ion-footer.chat-inputer .inputer button {
+        background: lightcoral;
+        margin: 0px 0px 8px 0px;
+    }
+    ion-footer.chat-inputer .inputer ion-input {
+        background: white;
+        margin: 0px; // 8px 8px 8px;
+        padding: 0px; // 8px;
+    }
+    ion-footer.chat-inputer .inputer ion-input input {
+        padding: 0px !important;
+    }
+    ion-footer .action button {
+        height: 36px;
+        margin: 0px;
+    }
+    ion-list ion-item {
+        border: none !important;
+    }
+    .chat-item .label {
+        margin: 0px;
+    }
+    .profile ion-img {
+        margin-top: 10px;
+    }
+    .profile img {
+        margin-top: 10px;
+    }
+    div.message {
+        border-radius: 5px;
+        display: inline-block;
+        padding: 6px 10px;
+        margin: 4px 10px;
+        max-width: 80%;
+    }
+    .message:before {
+        content: "";
+    }
+    .message.left {
+        background-color: #faa500;
+        color: #000;
+    }
+    .message.left:before {
+        width: 0;
+        height: 0;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #faa500;
+        border-top: 10px solid transparent;
+        position: relative;
+        top: 10px;
+        left: -20px;
+        float: left;
+    }
+    .message.right {
+        background-color: #E1FFC7;
+        color: #000;
+    }
+    .message.right:before {
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-left: 10px solid #E1FFC7;
+        border-bottom: 10px solid transparent;
+        position: relative;
+        top: 10px;
+        right: -20px;
+        float: right;
+    }
+    .message .name {
+        text-align: left;
+        color: lightseagreen;
+        font-size: 1.5rem;
+    }
+    .message .text {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+    }
+    .message .time {
+        text-align: right;
+    }
+    .chat-item ion-thumbnail ion-img,
+    .chat-item ion-thumbnail img {
+        width: 50vw;
+        height: 50vw;
+    }
+}

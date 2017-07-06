@@ -1,0 +1,117 @@
+activity-feed {
+    .time {
+        padding: 0 !important;
+        background: #fff;
+    }
+    .card {
+        margin: 0;
+        width: calc(100% - 0px);
+        box-shadow: 0px 0px 4px 1px #c3861d, 0 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 0px;
+        border-bottom: solid 1px #cd9029;
+        margin-bottom: 12px;
+    }
+    .card-header {
+        padding: 13px;
+        font-size: 1.6rem;
+        color: #fff;
+        background: #efa632;
+    }
+    .starttime_icon img {
+        width: 45px;
+        height: 45px;
+        border-radius: 100px;
+    }
+    .userday {
+        width: 100%;
+        float: left;
+        margin-top: 4px;
+        font-size: 18px;
+    }
+    .userday1 {
+        width: 100%;
+        float: left;
+        margin-top: 4px;
+        font-size: 16px;
+        color: #7b7a7a;
+    }
+    .situp img {
+        width: 35px;
+        height: 35px;
+    }
+    .cuts {
+        font-size: 18px;
+        margin-top: 6px;
+        margin-bottom: 0px;
+        color: #efa632;
+    }
+    .set {
+        color: #7b7a7a;
+        font-size: 14.5px;
+        font-weight: 100;
+        margin: 5px 0px;
+    }
+    .shadowlikecomment {
+        background: #ededed;
+        height: 55px;
+        margin-bottom: 12px;
+    }
+    .right {
+        border-right: solid 1px #b5b5b5;
+        margin: 7px 2px;
+    }
+    .shadowlikecomment img {
+        width: 40px;
+    }
+    .shadowlikecomment span {
+        position: absolute;
+        margin-top: 1px;
+        font-size: 21px;
+    }
+    .rightfirst {
+        margin: 7px 2px;
+    }
+    .shadowlikecomment {
+        background: #ededed;
+        height: 55px;
+        margin-bottom: 12px;
+    }
+    .shadowlikecomment img {
+        width: 40px;
+    }
+    .system {
+        font-size: 16px;
+        color: #a99f9f;
+        margin-top: 4px;
+        margin-bottom: 0;
+    }
+    .endtime {
+        float: right;
+        width: 35px !important;
+        height: 35px!important;
+    }
+    .options img {
+        margin-top: -8px;
+    }
+    .imagelist {
+        margin: -1px 0 -4px 0;
+    }
+    .imagelist img {
+        width: 100vw !important;
+        height: 100vw !important;
+    }
+    b,
+    strong {
+        font-weight: 400;
+    }
+    .daliyactivity {
+        display: block;
+        margin: 0 auto;
+    }
+    .daliyactivity p {
+        text-align: center;
+        margin: 3px;
+        font-size: 15px;
+        color: #7b7a7a;
+    }
+}

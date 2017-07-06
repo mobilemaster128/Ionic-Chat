@@ -1,0 +1,14 @@
+<ion-list class="unfollow">
+
+    <img *ngIf="currentUser.id" [navPush]="pushPage" [navParams]="{id:currentUser.id}" src="{{imageUrl}}{{currentUser.id}}" onError="this.src='assets/img/empty-profile.jpg';">
+    <p class="request"> if you change your mind, you'll have to request to follow
+        <span class="user">{{currentUser.username}}</span> again</p>
+    <ion-row>
+        <ion-col col-6 (click)="closeModal()" class="unfollowuser">
+            Cancel
+        </ion-col>
+        <ion-col col-6 (click)="unfollowUser()" class="unfollowuser">
+            UnFollow
+        </ion-col>
+    </ion-row>
+</ion-list>

@@ -1,0 +1,116 @@
+// Styles for all of the user pages:
+// Login, Signup, Support
+page-user {
+    .scroll-content {
+        background: #efa632;
+        margin-bottom: 0px!important;
+    }
+    .register_icons {
+        position: absolute;
+        right: 0;
+        width: 25px;
+    }
+    .list {
+        width: 80%;
+        margin: 0 auto!important;
+    }
+    .text-input {
+        margin: 22px 26px 6px 0px;
+        padding: 0;
+        width: calc(100% - 8px - 8px);
+    }
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+        border-bottom-color: #fff;
+        box-shadow: none;
+    }
+    .text-input {
+        color: #fff;
+        font-weight: 100;
+        font-size: 16px;
+    }
+    .text-input::-moz-placeholder {
+        color: #fff;
+        font-weight: 100;
+        font-size: 17px;
+    }
+    .text-input:-ms-input-placeholder {
+        color: #fff;
+        font-weight: 100;
+        font-size: 17px;
+    }
+    .text-input::-webkit-input-placeholder {
+        color: #fff;
+        font-weight: 100;
+        font-size: 17px;
+    }
+    ion-item.item.item-input.input-has-focus .item-inner,
+    ion-item.item.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner,
+    ion-item.item.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+        border-bottom-color: #fff;
+        box-shadow: none;
+    }
+    /* Workaround to hide window phone default validation colors */
+    ion-item.item-wp.item-input.input-has-focus .text-input,
+    ion-item.item-wp.item-input.ng-valid.input-has-value:not(.input-has-focus) .text-input,
+    ion-item.item-wp.item-input.ng-invalid.ng-touched:not(.input-has-focus) .text-input {
+        border: 2px solid #fff;
+    }
+    .label {
+        margin: 8px 0px 15px 0;
+        color: #fff;
+        font-weight: 100;
+    }
+    .dateofbirth {
+        position: absolute;
+    }
+    .button {
+        margin: 35px auto !important;
+        color: #fff !important;
+        text-align: center;
+    }
+    .signin {
+        text-align: center;
+        color: #fff;
+        font-size: 17px;
+    }
+    .creat1 {
+        text-align: center;
+        text-decoration: none;
+        color: #fff !important;
+        font-size: 18px !important;
+        font-weight: 100;
+        font-size: 18px !important;
+    }
+    .forget {
+        text-align: center;
+        text-decoration: none;
+        color: #fff !important;
+        font-size: 18px !important;
+        font-weight: 100;
+    }
+    .list .item-block .item-inner {
+        border-bottom: 1px solid #fff;
+    }
+    .text-danger {
+        color: #edeaea;
+    }
+    .card {
+        background: #efa632;
+        box-shadow: none;
+    }
+    .list-ios>.item-block:first-child {
+        border-top: 0px solid #fff;
+    }
+    .label-ios+ion-input .text-input,
+    .label-ios+ion-textarea .text-input,
+    .label-ios+.input+.cloned-input {
+        margin-left: 0px;
+        width: calc((100% - 8px) - 8px);
+    }
+    .item {
+        padding-left: 0px;
+    }
+    .footer-ios .toolbar-ios:first-child .toolbar-background-ios {
+        border-width: 0px 0 0;
+    }
+}

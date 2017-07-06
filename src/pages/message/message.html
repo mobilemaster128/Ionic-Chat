@@ -1,0 +1,116 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>{{ title | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="cancelCreate()" *ngIf="isCreating==true">
+          <ion-icon name="ios-close-circle-outline"></ion-icon>
+          </button>
+            <button ion-button icon-only (click)="createNewChat()" *ngIf="isCreating==false">
+          <ion-icon name="ios-add-circle-outline"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="csk_tabs notification_div">
+
+    <ng-container *ngIf="isCreating==false">
+        <h4 class="stable" *ngIf="!isloading&&messageList.length==0">No messages right now</h4>
+
+        <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+
+        <ion-list no-margin>
+            <ion-item-sliding class="thread" *ngFor="let data of messageList">
+                <!-- | orderby : 'lastseen': true"-->
+                <ion-item *ngIf="data.type=='direct'&&currentUser.id==data.participants[0]">
+                    <ion-avatar item-left [navPush]="pushPage" [navParams]="{id:data.participants[1]}">
+                        <img src="{{imageUrl}}{{data.participants[1]}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';">
+                    </ion-avatar>
+                    <h2 (click)="openChat(data)">{{data.participants[1] | username}}</h2>
+                    <p (click)="openChat(data)" *ngIf="data.unread==0">{{data.lastmsg}}</p>
+                    <p (click)="openChat(data)" *ngIf="data.unread>0">{{data.unreadMsg}}</p>
+                    <ion-badge item-end (click)="openChat(data)" color="twitter" *ngIf="data.unread>0">{{data.unread}}</ion-badge>
+                    <ion-note item-end (click)="openChat(data)">{{data.lastseen | toTime}}</ion-note>
+                </ion-item>
+                <ion-item *ngIf="data.type=='direct'&&currentUser.id==data.participants[1]">
+                    <ion-avatar item-left [navPush]="pushPage" [navParams]="{id:data.participants[0]}">
+                        <img src="{{imageUrl}}{{data.participants[0]}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';">
+                    </ion-avatar>
+                    <h2 (click)="openChat(data)">{{data.participants[0] | username}}</h2>
+                    <p (click)="openChat(data)" *ngIf="data.unread==0">{{data.lastmsg}}</p>
+                    <p (click)="openChat(data)" *ngIf="data.unread>0">{{data.unreadMsg}}</p>
+                    <ion-badge item-end (click)="openChat(data)" color="twitter" *ngIf="data.unread>0">{{data.unread}}</ion-badge>
+                    <ion-note item-end (click)="openChat(data)">{{data.lastseen | toTime}}</ion-note>
+                </ion-item>
+                <ion-item *ngIf="data.type=='group'" (click)="openChat(data)">
+                    <ion-avatar item-left>
+                        <img src="assets/img/groupchat.png">
+                    </ion-avatar>
+                    <h2>{{data.name}}</h2>
+                    <p *ngIf="data.unread==0">{{data.lastmsg}}</p>
+                    <p *ngIf="data.unread>0">{{data.unreadMsg}}</p>
+                    <ion-badge item-end color="twitter" *ngIf="data.unread>0">{{data.unread}}</ion-badge>
+                    <ion-note item-end>{{data.lastseen | toTime}}</ion-note>
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button icon-only color="danger" (click)="leaveThread(data)"><ion-icon name="ios-trash-outline"></ion-icon></button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </ng-container>
+
+    <ng-container *ngIf="isCreating==true">
+        <div class="receivers">
+            To :
+            <ion-chip *ngFor="let user of selectedUsers">
+                <ion-label>{{user | username}}</ion-label>
+                <ion-icon name="close-circle" (click)="unSelectUser(user)"></ion-icon>
+            </ion-chip>
+        </div>
+        <ion-list no-margin class="notification_div">
+            <ion-searchbar [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)" [(ngModel)]="userInput" (ionInput)="onInput($event)" placeholder="Search"></ion-searchbar>
+
+            <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+
+            <ion-item *ngFor="let user of userSearchList" (click)="clickUser(user)">
+                <ion-icon item-start name="md-checkmark" color="twitter" *ngIf="user.selected==true"></ion-icon>
+                <ion-avatar item-left>
+                    <img src="{{user.picture}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';">
+                </ion-avatar>
+                {{user.username}}
+            </ion-item>
+
+            <h4 class="stable" *ngIf="!isloading&&userSearchList.length==0">Search and connect with people</h4>
+        </ion-list>
+    </ng-container>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="(hasMoreData==true&&isCreating==false)||(hasMoreUser==true&&isCreating==true)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-fab center bottom *ngIf="selectedUsers.length>0&&isCreating==true">
+        <button ion-fab color="primary" (click)="createChat()"><ion-icon name="md-chatboxes"></ion-icon></button>
+    </ion-fab>
+
+    <!--ion-fab right bottom>
+        <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+        <!--     <ion-fab-list side="top">
+    <div class="floatingmenus">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon> </button>
+      <span class="floatingmenus1">Facebook</span>
+      </div>
+          <div class="floatingmenus">
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon> </button>
+      <span class="floatingmenus1">Twitter</span>
+      </div>
+          <div class="floatingmenus">
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon> </button>
+      <span class="floatingmenus1">Vimeo</span>
+      </div>
+    </ion-fab-list> -->
+    <!--/ion-fab-->
+</ion-content>

@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'SELECTACTIVITY' | translate }}
+            <ion-icon name="close" (click)="closeModal()" class="close"></ion-icon>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="csk_tabs">
+    <div>
+        <ion-segment [(ngModel)]="activeTab">
+            <ion-segment-button value="custom" style="border:solid 1px #e5e5e6!important;text-transform: capitalize;    margin-top: 1px;">
+                {{ 'CUSTOM' | translate }}
+            </ion-segment-button>
+            <ion-segment-button value="system" style="border:solid 1px #e5e5e6!important;text-transform: capitalize;    margin-top: 1px;">
+                {{ 'SYSTEM' | translate }}
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="activeTab">
+        <ion-list *ngSwitchCase="'custom'">
+            <!-- <ion-list class="myaccount">
+      <button ion-item >
+       <span class="pull">{{ 'PULUPSACTIVITY' | translate }}</span>
+      </button>
+    </ion-list>
+    <ion-list class="myaccount">
+      <button ion-item >
+       <span class="pull">{{ 'RUNACTIVITY' | translate }}</span>
+      </button>
+    </ion-list>
+    <ion-list class="myaccount">
+      <button ion-item >
+       <span class="pull">{{ 'SITUPACTIVITY' | translate }}</span>
+      </button>
+    </ion-list> -->
+
+            <ion-list class="myaccount">
+                <button ion-item>
+       <span class="pull">No Custom Activity</span>
+      </button>
+            </ion-list>
+
+            <button ion-button color="dark" class="addmedia" (click)="openaddcustom()">
+      {{ 'ADDCUSTOMACTIVITY' | translate }}
+    </button>
+        </ion-list>
+    </div>
+
+    <div [ngSwitch]="activeTab">
+
+        <ion-list *ngSwitchCase="'system'">
+
+            <ion-searchbar [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)" [(ngModel)]="queryInput" (ionInput)="onInput($event)" placeholder="Search">
+            </ion-searchbar>
+
+            <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+
+            <ion-list class="myaccount" *ngFor="let data of querySearchList" (click)="selectActivityType(data)">
+                <button ion-item>
+           <span class="pull">{{data.Name}}</span>
+          </button>
+            </ion-list>
+            <button ion-button color="dark" class="addmedia" (click)="openaddcustom()">{{ 'ADDCUSTOMACTIVITY' | translate }}
+         </button>
+        </ion-list>
+    </div>
+</ion-content>

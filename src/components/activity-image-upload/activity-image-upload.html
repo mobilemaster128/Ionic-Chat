@@ -1,0 +1,6 @@
+<ion-list class="addmedia_button">
+    <button ion-button color="dark" class="addmedia" (click)="selectCameraType()">
+		<img src="assets/img/gymcamera.png" >{{ 'ADDMEDIA' | translate }} 
+	</button>
+    <ion-icon name="close" class="coloseaddmedia" (click)="removeImage()" *ngIf="imageData!=''"></ion-icon>
+</ion-list>

@@ -1,0 +1,441 @@
+page-profile {
+    div.toolbar-title span {
+        color: black;
+        display: inline-block;
+        position: relative;
+        bottom: 12px;
+    }
+    ion-title img {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+    }
+    span.badge {
+        font-size: 1.2rem;
+        top: 0px;
+        right: 0px;
+        position: absolute;
+        padding: 2px 4px;
+        margin-left: 4px;
+        background-color: #2d7cfc;
+        border-radius: 50%;
+    }
+    .chatlist {
+        font-size: 2.1em!important;
+    }
+    .bar-button-menutoggle {
+        margin: 0 3px;
+    }
+    .noteslist {
+        margin-right: 6%;
+    }
+    .profilescroll {
+        background: #fff;
+    }
+    ion-scroll {
+        height: 65px!important;
+        width: 100vw;
+    }
+    ion-scroll[scrollX] {
+        white-space: nowrap;
+        .scroll-item {
+            display: inline-block;
+        }
+    }
+    .scroll-content {
+        margin-top: 0px !important;
+        background-image: url(../assets/img/profilebg.png)!important;
+        background-size: 100% 100%!important;
+    }
+    .scroll-zoom-wrapper {
+        margin-left: 2%;
+    }
+    ion-scroll .scroll-content {
+        top: 10px!important;
+        background-image: none!important
+    }
+    .floatingmenus {
+        position: relative;
+    }
+    .profilescroll img {
+        width: 45px;
+        height: 45px;
+    }
+    .feedviewscroll {
+        margin-top: 0px !important;
+        height: 75px!important;
+        background: #fff;
+    }
+    .csk_tabs h3 {
+        text-align: center;
+        font-size: 18px;
+        margin: 10px;
+        margin-bottom: 0!important;
+    }
+    .csk_tabs h4 {
+        text-align: center;
+        font-size: 16px;
+        margin: 10px;
+        margin-top: 0!important;
+        padding-top: 5px!important;
+    }
+    .champians_list {
+        height: 150px;
+    }
+    .champians_list img {
+        height: 150px;
+        width: 100%;
+    }
+    .livestreaming h4 {
+        color: #dd2620!important;
+    }
+    .livestreaming h4 img {
+        width: 32px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+    .csk_tabs h2 {
+        text-align: center;
+        font-size: 38px;
+        color: #074880;
+    }
+    .csk_tabs ion-grid {
+        position: relative;
+    }
+    .csk_tabs ion-grid h1 {
+        text-align: center;
+        font-size: 34px;
+        padding: 28px 0;
+        background: #4bafeb;
+        border-bottom: solid 4px #2e8bd1;
+    }
+    .champians {
+        padding: 10px !important;
+        float: left;
+    }
+    .champians span {
+        color: #155183!important;
+    }
+    .csk_tabs .list .card {
+        margin: 20px 10px !important;
+        position: relative!important;
+        border: solid 1px #959595;
+    }
+    .csk_tabs h4 {
+        float: left;
+        width: 100%;
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+    .csk_tabs .list .join {
+        position: absolute;
+        top: 0!important;
+        width: 60px!important;
+    }
+    .csk_tabs .list .live {
+        position: absolute;
+        top: 0!important;
+        right: 0!important;
+        width: 40px!important;
+    }
+    .segment-button {
+        color: #faa500 !important;
+    }
+    .segment .segment-button.activated,
+    .segment .segment-button.segment-activated {
+        border-color: #bcbcbc !important;
+        border-bottom-width: 1.3px!important;
+        color: #565656!important;
+        background: #ededed;
+        height: 4.6rem !important;
+        font-size: 1.6rem !important;
+        line-height: 4.8rem !important;
+        padding: 0 !important;
+    }
+    .csk_tabs .card ion-col {
+        text-align: center;
+    }
+    .csk_tabs .card ion-col img {
+        width: 60px!important;
+        margin: 0 auto;
+    }
+    .weeks {
+        padding-left: 0!important;
+        padding-top: 10px!important;
+        padding-bottom: 10px!important;
+    }
+    .activity {
+        width: 16.6%;
+    }
+    .activity img {
+        width: 100%;
+    }
+    .activityheader {
+        padding: 10px 10px;
+        background: #fbfbfb!important;
+    }
+    ion-segment {
+        z-index: 999!important;
+        top: 55px!important;
+    }
+    .cashleagues {
+        float: left!important;
+        font-size: 12px!important;
+        width: 33.3%!important;
+    }
+    .friendleagues {
+        float: left!important;
+        font-size: 12px!important;
+        width: 33.3%!important;
+    }
+    .winning_amount {
+        float: right!important;
+        font-size: 12px!important;
+        width: 33.3%!important;
+    }
+    .cashleagues b,
+    .winning_amount b,
+    .friendleagues b {
+        font-size: 16px!important;
+        width: 100%;
+        float: left;
+    }
+    .button-outline-light {
+        border-color: #b5b5b5;
+        color: #6d6a6a;
+        background-color: transparent;
+        width: 100%;
+    }
+    .twoactivity {
+        line-height: 50px;
+        color: #76d58a;
+        font-size: 19px;
+        text-align: right;
+    }
+    .button {
+        overflow: hidden;
+        margin: 0.4rem 0.0rem;
+        padding: 0 1.1em;
+        height: 3.9rem;
+        border-radius: 20px;
+        font-size: 28px;
+        padding-right: 9px;
+    }
+    .button-outline-light {
+        border-color: #b5b5b5;
+        color: #6d6a6a;
+        background-color: transparent;
+    }
+    .join img {
+        position: absolute;
+        width: 39px;
+        top: 9px;
+        border-radius: 100px;
+        height: 39px;
+        left: 6px;
+    }
+    .outlines .csk_tabs ion-grid span {
+        width: 100% !important;
+        float: left;
+        padding: 13px;
+        font-size: 12px;
+        margin-top: 2px
+    }
+    .outlines .button {
+        overflow: hidden;
+        margin: 0.4rem 0.2rem;
+        padding: 0 0;
+        height: 2.9rem;
+        border-radius: 17px;
+        font-size: 0px;
+    }
+    .start {
+        float: left;
+        padding: 12px;
+        font-size: 11px;
+        margin-top: 12px!important;
+        overflow: inherit;
+        display: inherit;
+        text-overflow: inherit;
+        white-space: inherit;
+        width: 100%;
+        height: 3.5rem!important;
+        border-color: #ee7d33;
+    }
+    .start span {
+        font-size: 11px !important;
+        width: 100%!important;
+        line-height: 0px;
+        overflow: hidden!important;
+        display: flex!important;
+        text-overflow: inherit!important;
+        white-space: nowrap!important;
+        padding-right: 18px!important;
+        color: #29292a;
+        text-align: center;
+    }
+    .ibs {
+        line-height: 26px;
+        margin: 0!important;
+    }
+    .ibs b {
+        float: left;
+    }
+    .ibs span {
+        padding: 0!important;
+    }
+    .item.item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: 1px solid #848484;
+    }
+    .profilebackground {
+        background: #fff;
+    }
+    .weigth {
+        margin-bottom: 0px;
+    }
+    .weigth ion-label {
+        margin: 0!important;
+    }
+    .rep {
+        font-weight: bold;
+        color: #efa632;
+    }
+    .completed {
+        color: #36343d;
+        margin-top: 10px;
+        margin-bottom: 6px;
+    }
+    .like {
+        background: #ccc!important;
+    }
+    .likecomment {
+        background: #f5f5f5;
+        height: 55px;
+        margin-bottom: 12px;
+        box-shadow: inset 1px 3px 6px -2px #ccc;
+        border-top: solid 1px #ccc;
+    }
+    .likecomment img {
+        width: 40px;
+    }
+    .likecomment span {
+        position: absolute;
+        left: 43px;
+        font-size: 21px;
+        top: 15px;
+    }
+    .option {
+        float: right;
+    }
+    .beforelike {}
+    .optionlist {
+        margin: 3px 2px !important;
+    }
+    .date {
+        margin-top: 14px;
+    }
+    .hadtaken {
+        margin-top: -5px;
+        margin-bottom: 8px;
+    }
+    .profileimg img {
+        width: 90px;
+        height: 90px;
+        float: right;
+        border-radius: 100%;
+    }
+    .profilehead p {
+        color: #535353 !important;
+        font-size: 21px;
+        margin-top: 13px;
+        margin-bottom: 0;
+    }
+    .profilehead p b {
+        font-size: 23px!important;
+    }
+    .toolbar-background {
+        background: transparent;
+    }
+    .profilebody {
+        padding-top: 20px;
+    }
+    .header .icon {
+        color: #535353!important;
+    }
+    .ion-menu {
+        border: solid 2px #535353;
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        padding-top: 5px;
+    }
+    .following_user {
+        float: left;
+        padding: 5px;
+        margin-top: 0px;
+        overflow: hidden;
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: center;
+        width: 100%;
+        font-size: 21px;
+    }
+    .following {
+        background: #41da5a!important;
+        color: #fff!important;
+    }
+    .following b,
+    .followers b {
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        float: left;
+        margin-top: 5px;
+        margin-bottom: -10px;
+    }
+    .followers {
+        background: #faa500!important;
+        color: #fff!important;
+    }
+    .following p,
+    .followers p {
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        float: left;
+        margin-top: 5px;
+        margin-bottom: -2px;
+    }
+    .profile-plus,
+    .profile-tick {
+        position: absolute;
+        top: -25px;
+        width: 50px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 99;
+    }
+    .smith {
+        background: #fff!important;
+    }
+    .ios ion-nav>.ion-page>ion-content.statusbar-padding:first-child .scroll-content,
+    .ios ion-nav>.ion-page>ion-header>ion-content.statusbar-padding:first-child .scroll-content,
+    .ios ion-tab>.ion-page>ion-header>ion-content.statusbar-padding:first-child .scroll-content,
+    .ios ion-tabs>.ion-page.tab-subpage>ion-header>ion-content.statusbar-padding:first-child .scroll-content,
+    .ios ion-menu>.menu-inner>ion-content.statusbar-padding:first-child .scroll-content,
+    .ios ion-menu>.menu-inner>ion-header>ion-content.statusbar-padding:first-child .scroll-content {
+        padding-top: 0px!important;
+    }
+    .tickimage {
+        position: absolute;
+        left: 0px;
+    }
+    .activitylist {
+        position: relative;
+        width: 14%;
+    }
+}

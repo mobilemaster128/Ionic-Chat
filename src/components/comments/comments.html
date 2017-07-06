@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>Comments
+            <ion-icon name="close" (click)="closeModal()" class="close"></ion-icon>
+        </ion-title>
+        <ion-buttons end>
+
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="csk_tabs notification_div">
+
+    <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+    <ion-item *ngFor="let data of commentList">
+        <profile-picture [activity]="data" [currentUser]="currentUser" [index]="i">
+        </profile-picture>
+        <h2 *ngIf="data.authorId==currentUser.id">{{currentUser.username}} <span class="usercomment">{{data.comment}}</span></h2>
+        <h2 *ngIf="data.authorId!=currentUser.id">{{data.authorId | username}} <span class="usercomment">{{data.comment}}</span></h2>
+
+        <p class="time">{{data.date | amTimeAgo}}</p>
+    </ion-item>
+
+</ion-content>
+
+
+<ion-footer class="chattype">
+    <ion-toolbar>
+        <ion-row class="footerlist">
+            <!--  <ion-col col-2 class="footerlogo">
+        <img src="assets/img/activity1.png">
+    </ion-col> -->
+            <ion-col col-10>
+                <ion-input type="text" [(ngModel)]='message' (change)='onSendMsg($event.target.value)' placeholder="{{ 'WRITE MESSGAE HERE' | translate }}......" autocomplete="true" spellcheck="true"></ion-input>
+            </ion-col>
+            <ion-col col-2>
+                <p class="send">{{ 'SEND' | translate }}</p>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

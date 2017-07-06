@@ -1,0 +1,26 @@
+<ion-avatar item-left class="profile-picture">
+    
+    
+    <ng-container *ngIf="activity.sender">
+
+        <img  [navPush]="pushPage" [navParams]="{id:activity.sender}" 
+        src="{{imageUrl}}{{activity.sender}}{{this.time}}" onError="this.src='assets/img/empty-profile.jpg';">
+
+    </ng-container>
+
+    <ng-container *ngIf="activity.sender==null">
+
+        <img *ngIf="activity.picture==null&&activity.authorId==null&&activity.id" [navPush]="pushPage" [navParams]="{id:activity.id}" src="assets/img/empty-profile.jpg">
+        <img *ngIf="activity.picture==null&&activity.authorId==null&&activity.id==null" [navPush]="pushPage" [navParams]="{id:activity.userId}" src="assets/img/empty-profile.jpg">
+
+        <img *ngIf="activity.authorId" [navPush]="pushPage" [navParams]="{id:activity.authorId}" 
+        src="{{imageUrl}}{{activity.authorId}}{{this.time}}" onError="this.src='assets/img/empty-profile.jpg';">
+    </ng-container>
+
+    <ng-container *ngIf="activity.picture">
+        <img *ngIf="activity.userId" [navPush]="pushPage" [navParams]="{id:activity.userId}" 
+        src="{{imageUrl}}{{activity.userId}}{{this.time}}" onError="this.src='assets/img/empty-profile.jpg';">
+        <img *ngIf="activity.id" [navPush]="pushPage" [navParams]="{id:activity.id}" 
+        src="{{imageUrl}}{{activity.id}}{{this.time}}" onError="this.src='assets/img/empty-profile.jpg';">
+    </ng-container>
+</ion-avatar>

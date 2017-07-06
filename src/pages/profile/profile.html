@@ -1,0 +1,124 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <img src="assets/img/sidemenu.png" style="width:40px;">
+    </button>
+        <ion-title>
+            <img src="{{currentUser.picture}}{{time}}" (click)="selectCameraType()" onError="this.src='assets/img/empty-profile.jpg';">
+            <span>{{currentUser.username}}</span>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only class="notification" *ngIf="!IsMyprofile">
+        <img src="assets/img/edit.png" style="width:40px;">
+     </button>
+            <button ion-button icon-only class="notification" (click)="openChat()" *ngIf="!IsMyprofile">
+          <ion-icon name="ios-chatbubbles-outline" class="chatlist"></ion-icon>
+    </button>
+            <button ion-button icon-only class="notification" (click)="openMessage()" *ngIf="IsMyprofile">
+          <ion-icon name="ios-chatboxes-outline" class="chatlist"></ion-icon>
+        <span class="badge" *ngIf="firebase.unreadMsgCount>0">{{firebase.unreadMsgCount}}</span>
+    </button>
+            <button ion-button icon-only class="notification" (click)="opensettings()" *ngIf="IsMyprofile">
+        <img src="assets/img/settings.png" style="width:40px;">
+    </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content header-dynamic class="csk_tabs">
+    <ion-grid style="padding:60px 0px 20px 0px;">
+        <ion-row>
+            <ion-col col-5 class="profileimg" (click)="selectCameraType()">
+                <ion-avatar>
+                    <img src="{{currentUser.picture}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';">
+                </ion-avatar>
+
+            </ion-col>
+            <ion-col col-7 class="profilehead">
+                <p><b>{{currentUser.username}}</b></p>
+                <p>Skyscore: 501</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid style="padding:0px!important;">
+        <ion-row>
+
+            <ion-col col-6 class="following" (click)="openfollow('FOLLOWING')">
+                <b>{{currentUser.follows}}</b>
+                <p class="following_user">{{ 'FOLLOWING' | translate }}</p>
+            </ion-col>
+            <ng-container *ngIf="!IsMyprofile">
+                <img *ngIf="userFollow==1" src="assets/img/profile-plus.png" class="profile-plus" (click)="followingUser()">
+                <img *ngIf="userFollow==2" src="assets/img/profile-tick.png" class="profile-tick" (click)="unfollowingUser()">
+            </ng-container>
+            <ion-col col-6 class="followers" (click)="openfollow('FOLLOWERS')">
+                <b>{{currentUser.followers}}</b>
+                <p class="following_user">{{ 'FOLLOWERS' | translate }}</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-scroll scrollX class="profilescroll">
+        <div class="scroll-item activitylist " [ngClass]="{'activityborder': activeMenu=='ALL'}" (click)="setActive('ALL')">
+            <img src="assets/img/activitys.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='ALL'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='GYM'}" (click)="setActive('GYM')">
+            <img src="assets/img/gym.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='GYM'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='STATIONARY'}" (click)="setActive('STATIONARY')">
+            <img src="assets/img/stationary.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='STATIONARY'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist " (click)="setActive('FREEFORM')">
+            <img src="assets/img/freeform.png">
+            <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='FREEFORM'">
+        </div>
+        <div class="scroll-item activitylist " (click)="setActive('SLEEP')">
+            <img src="assets/img/sleep.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='SLEEP'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='FOOD'}" (click)="setActive('FOOD')">
+            <img src="assets/img/nutrition.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='FOOD'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist " (click)="setActive('SPORTS')">
+            <img src="assets/img/sports.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='SPORTS'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist " (click)="setActive('GYMSESSION')">
+            <img src="assets/img/gymsession.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='GYMSESSION'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist " (click)="setActive('BOXSESSION')">
+            <img src="assets/img/boxsession.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='BOXSESSION'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='BODY_STATS'}" (click)="setActive('BODY_STATS')">
+            <img src="assets/img/bodystat.png">
+            <img src="assets/img/tickimage.png" *ngIf="activeMenu=='BODY_STATS'" class="tickimage">
+        </div>
+        <div class="scroll-item activitylist " [ngClass]="{'activityborder': activeMenu=='INJURY'}" (click)="setActive('INJURY')">
+            <img src="assets/img/injury.png">
+            <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='INJURY'">
+        </div>
+        <div class="scroll-item activitylist " [ngClass]="{'activityborder': activeMenu=='ILLNESS'}" (click)="setActive('ILLNESS')">
+            <img src="assets/img/illness.png">
+            <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='ILLNESS'">
+        </div>
+        <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='NOTE'}" (click)="setActive('NOTE')">
+            <img src="assets/img/notes.png">
+            <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='NOTE'">
+        </div>
+    </ion-scroll>
+
+    <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+    <h4 class="stable" *ngIf="!isloading&&tempactivityFeedList.length==0">No Logged Available</h4>
+    <activity-feed *ngFor="let activity of tempactivityFeedList; let i=index" [activity]="activity" [currentUser]="currentUser" [index]="i" [type]="type" (deleteEvent)="deleteFeed($event)">
+    </activity-feed>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="hasMoreData">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

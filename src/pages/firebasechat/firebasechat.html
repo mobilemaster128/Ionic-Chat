@@ -1,0 +1,92 @@
+<!--
+  Generated template for the Chat page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+    <ion-navbar>
+        <ion-title (click)="changeName()">
+            <ion-icon name="people" color="twitter" *ngIf="isGroup"></ion-icon> {{ title | translate }}
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content class="firechat" scrollDownOnLoad="true">
+    <!--header-scroller -->
+    <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+    <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="isAll==false">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Loading more...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+        <ion-item no-lines class="chat-item" *ngFor="let data of chatList">
+            <div class="chat" *ngIf="data.sender!=currentUser.id">
+                <img class="user left" src="{{imageUrl}}{{data.sender}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';" [navPush]="pushPage" [navParams]="{id:data.sender}">
+                <!--ion-img class="user left" [src]="imageUrl + data.sender" onError="this.src='assets/img/empty-profile.jpg';"></ion-img-->
+                <div class="message left" [ngClass]="{'read': true}">
+                    <p class="name">{{users[data.sender]}}</p>
+                    <!--{{data.sender | username}}</p-->
+                    <div class="text" *ngIf="data.type=='text'">{{data.message}}</div>
+                    <!--ion-img width="180" height="180" class="image" *ngIf="data.type=='image'" src="{{data.message}}" style="position: inherit"></ion-img-->
+                    <img class="image" *ngIf="data.type=='image'" src="{{data.message}}" style="position: inherit">
+                    <p class="time">{{data.timestamp | toTime}}</p>
+                </div>
+            </div>
+
+            <div class="chat" chat2 *ngIf="data.sender==currentUser.id">
+                <img class="user right" src="{{currentUser.picture}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';" [navPush]="pushPage" [navParams]="{id:data.sender}">
+                <!--ion-img class="user right" src="{{currentUser.picture}}" onError="this.src='assets/img/empty-profile.jpg';"></ion-img-->
+                <div class="message right" [ngClass]="{'read': data.read}">
+                    <p class="name">{{currentUser.username}}</p>
+                    <div class="text" *ngIf="data.type=='text'">{{data.message}}</div>
+                    <!--ion-img width="180" height="180" class="image" *ngIf="data.type=='image'" src="{{data.message}}" style="position: inherit"></ion-img-->
+                    <img class="image" *ngIf="data.type=='image'" src="{{data.message}}" style="position: inherit">
+                    <p class="time">{{data.timestamp | toTime}}</p>
+                </div>
+            </div>
+
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer class="chat-inputer">
+    <div class="typings" *ngIf="typings != 0">
+        <ng-container no-lines class="typing" *ngFor="let user of typings; let idx = index">
+            <span *ngIf="idx==0">{{user}}</span>
+            <span *ngIf="idx>0">,{{user}}</span>
+        </ng-container>
+        <span> is typing...</span>
+    </div>
+
+    <ion-scroll text-nowrap scrollX="true" class="receivers" *ngIf="isGroup"> To :
+        <ion-chip *ngFor="let user of thread.participants">
+            <ion-label>{{user | username}}</ion-label>
+        </ion-chip>
+    </ion-scroll>
+
+    <!--ion-item no-lines class="inputer"-->
+    <!--button ion-fab mini item-left (click)="selectCameraType()"><ion-icon name="ios-camera"></ion-icon></button-->
+    <ion-input class="input" type="text" autocomplete="true" spellcheck="true" [(ngModel)]='message' (keyup)="updateState($event.target.value)" (change)='onSendMsg($event.target.value)' placeholder="{{ 'WRITEMESSGAEHERE' | translate }}......"></ion-input>
+    <!--button ion-fab mini item-right><ion-icon name="ios-send"></ion-icon></button-->
+    <!--/ion-item-->
+    <ion-row class="action">
+        <ion-col no-padding>
+            <button ion-button icon-only full clear (click)="getImage('gallery')">
+                <ion-icon name="ios-image" color="twitter"></ion-icon>
+            </button>
+        </ion-col>
+        <ion-col no-padding>
+            <button ion-button icon-only full clear (click)="getImage('camera')">
+                <ion-icon name="ios-camera" color="twitter"></ion-icon>
+            </button>
+        </ion-col>
+        <ion-col no-padding>
+            <button ion-button icon-only full clear>
+                <ion-icon name="ios-happy" color="twitter"></ion-icon>
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

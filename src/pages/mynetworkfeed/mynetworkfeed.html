@@ -1,0 +1,117 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+        <ion-title>{{ 'MYNETWORKFEED' | translate }}</ion-title>
+        <header-icon></header-icon>
+    </ion-navbar>
+</ion-header>
+<ion-content header-transparent class="csk_tabs list_view">
+    <ion-navbar no-border-bottom>
+    </ion-navbar>
+
+    <div>
+        <ion-segment [(ngModel)]="activeTab">
+            <ion-segment-button value="listview" (click)="listView()">
+                {{ 'LISTVIEW' | translate }}
+            </ion-segment-button>
+            <ion-segment-button value="feedview" (click)="feedView()">
+                {{ 'FEEDVIEW' | translate }}
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="activeTab" class="feedlist">
+        <ion-list *ngSwitchCase="'listview'">
+            <h4 class="stable" *ngIf="!isloading&&networkFeedList.length==0">No Logged Available</h4>
+            <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+            <ion-list>
+                <ion-item *ngFor="let activity of networkFeedList">
+                    <ion-avatar item-start>
+                        <img src="{{activity.picture}}{{time}}" *ngIf="activity.selected==false" (click)="selectActivity(activity)" onError="this.src='assets/img/empty-profile.jpg';">
+                        <img class="selected" *ngIf="activity.selected==true" (click)="unSelectActivity(activity)" src="assets/img/checked.png">
+                    </ion-avatar>
+                    <span class="cher" *ngIf="!activity.username">{{currentUser.username}}</span>
+                    <span class="cher" *ngIf="activity.username">{{activity.username}}</span>
+                    <p class="activitymember">Opened {{activity.day | amDateFormat:'LL'}}</p>
+                    <ion-note item-end class="datetime">{{activity.data.length}} Logged</ion-note>
+                </ion-item>
+            </ion-list>
+        </ion-list>
+    </div>
+    <div [ngSwitch]="activeTab">
+        <ng-container *ngSwitchCase="'feedview'">
+            <ion-scroll scrollX class="feedviewscroll">
+                <div class="scroll-item activitylist " [ngClass]="{'activityborder': activeMenu=='ALL'}" (click)="setActive('ALL')">
+                    <img src="assets/img/activitys.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='ALL'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='GYM'}" (click)="setActive('GYM')">
+                    <img src="assets/img/gym.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='GYM'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='STATIONARY'}" (click)="setActive('STATIONARY')">
+                    <img src="assets/img/stationary.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='STATIONARY'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist " (click)="setActive('FREEFORM')">
+                    <img src="assets/img/freeform.png">
+                    <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='FREEFORM'">
+                </div>
+                <div class="scroll-item activitylist " (click)="setActive('SLEEP')">
+                    <img src="assets/img/sleep.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='SLEEP'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='FOOD'}" (click)="setActive('FOOD')">
+                    <img src="assets/img/nutrition.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='FOOD'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist " (click)="setActive('SPORTS')">
+                    <img src="assets/img/sports.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='SPORTS'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist " (click)="setActive('GYMSESSION')">
+                    <img src="assets/img/gymsession.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='GYMSESSION'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist " (click)="setActive('BOXSESSION')">
+                    <img src="assets/img/boxsession.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='BOXSESSION'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='BODY_STATS'}" (click)="setActive('BODY_STATS')">
+                    <img src="assets/img/bodystat.png">
+                    <img src="assets/img/tickimage.png" *ngIf="activeMenu=='BODY_STATS'" class="tickimage">
+                </div>
+                <div class="scroll-item activitylist " [ngClass]="{'activityborder': activeMenu=='INJURY'}" (click)="setActive('INJURY')">
+                    <img src="assets/img/injury.png">
+                    <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='INJURY'">
+                </div>
+                <div class="scroll-item activitylist " [ngClass]="{'activityborder': activeMenu=='ILLNESS'}" (click)="setActive('ILLNESS')">
+                    <img src="assets/img/illness.png">
+                    <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='ILLNESS'">
+                </div>
+                <div class="scroll-item activitylist" [ngClass]="{'activityborder': activeMenu=='NOTE'}" (click)="setActive('NOTE')">
+                    <img src="assets/img/notes.png">
+                    <img src="assets/img/tickimage.png" class="tickimage" *ngIf="activeMenu=='NOTE'">
+                </div>
+            </ion-scroll>
+
+            <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+            <h4 class="stable" *ngIf="!isloading&&tempnetworkFeedList.length==0">No Logged Available</h4>
+
+            <ng-container>
+                <activity-feed *ngFor="let activity of tempnetworkFeedList; let i=index" [activity]="activity" [currentUser]="currentUser" [index]="i" [type]="type" (deleteEvent)="deleteFeed($event)">
+                </activity-feed>
+            </ng-container>
+        </ng-container>
+    </div>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="hasMoreData&&(activeTab=='listview'||(activeTab=='feedview'&&isFilter==false))">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-fab center bottom *ngIf="selectedActivities>0&&activeTab=='listview'">
+        <button ion-fab color="danger" (click)="filterActivity()"><ion-icon name="md-play"></ion-icon></button>
+    </ion-fab>
+</ion-content>

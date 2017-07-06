@@ -1,0 +1,15 @@
+<ion-buttons end>
+
+    <button ion-button (click)="openNotification()">
+        <ion-icon name="notifications" ></ion-icon>
+        <span class="badge" *ngIf="notificationCount>0">{{notificationCount}}</span>
+    </button>
+    <button ion-button (click)="openMessage()">
+        <ion-icon name="md-chatboxes" class="chatboxes"></ion-icon>
+        <span class="badge" *ngIf="firebase.unreadMsgCount>0">{{firebase.unreadMsgCount}}</span>
+    </button>
+    <button ion-button icon-only class="notification" (click)="opendiscoverysettings()" *ngIf="activeTab=='discover'">
+        <img src="assets/img/settings1.png">
+    </button>
+
+</ion-buttons>

@@ -1,0 +1,132 @@
+<ng-container>
+    <ion-grid class="time">
+        <ion-card>
+            <ion-card-header>
+                {{activity.day | amDateFormat:'LL'}} | {{activity.day | amDateFormat:'ddd'}}
+            </ion-card-header>
+        </ion-card>
+        <ion-grid class="time">
+            <ion-row>
+                <ion-col col-2 class="starttime_icon">
+                    <ng-container *ngIf="type=='profile'">
+                        <img  src="{{currentUser.picture}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';">
+                    </ng-container >
+                    <ng-container *ngIf="type!='profile'">
+                        <img [navPush]="pushPage" [navParams]="{id:activity.userId}" 
+                        src="{{imageUrl}}{{activity.userId}}{{time}}" onError="this.src='assets/img/empty-profile.jpg';">
+                    </ng-container>
+                </ion-col>
+                <ion-col col-8>
+                    <span class="userday" *ngIf="!activity.username">{{currentUser.username}}</span>
+                    <span class="userday" *ngIf="activity.username">{{activity.username}}</span>
+                    <span class="userday1">{{activity.data.length}} Logged</span>
+                </ion-col>
+                <ion-col col-2 class="starttime_icon">
+                    <img src="assets/img/endtime.png" class="endtime" (click)="toggleGroup(index,activity)" [ngClass]="{active: isGroupShown(index)}">
+                </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf="isGroupShown(index)">
+                <ion-list class="daliyactivity" *ngIf="workoutChartData.length>0">
+                    <p>Training Volume By Muscle Group</p>
+                    <p>Training Volume : {{traningVolume}}</p>
+                    <canvas baseChart [data]="workoutChartData" [labels]="workoutChartLabels" [chartType]="workoutChartType" [colors]="workoutColors">
+                  </canvas>
+                </ion-list>
+                <ion-list class="daliyactivity" *ngIf="nutritionChartData.length>0">
+                    <h3>Daily Activities Breakdown by Calories</h3>
+                    <canvas baseChart [data]="nutritionChartData" [labels]="nutritionChartLabels" [chartType]="nutritionChartType" [colors]="nutritionColors" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                  </canvas>
+                </ion-list>
+            </ion-row>
+        </ion-grid>
+        <ng-container *ngFor="let setdata of activity.data">
+            <ion-grid class="time">
+                <ion-row>
+                    <ion-col col-2 class="situp">
+                        <img *ngIf="setdata.type == 'GYM'" src="assets/img/gym.png">
+                        <img *ngIf="setdata.type == 'NUTRITION'" src="assets/img/nutrition.png">
+                        <img *ngIf="setdata.type == 'BODY_STATS'" src="assets/img/bodystat.png">
+                        <img *ngIf="setdata.type == 'NOTE'" src="assets/img/notes.png">
+                        <img *ngIf="setdata.type == 'INJURY'" src="assets/img/injury.png">
+                        <img *ngIf="setdata.type == 'ILLNESS'" src="assets/img/illness.png">
+                        <img *ngIf="setdata.type == 'FOOD'" src="assets/img/nutrition.png">
+                        <img *ngIf="setdata.type == 'STATIONARY'" src="assets/img/stationary.png">
+
+                    </ion-col>
+                    <ion-col col-10>
+                        <p class="cuts">RIP Workout</p>
+                        <ng-container *ngIf="setdata.type == 'GYM'&&setdata.weight == 0">
+                            <p class="set"><b>{{setdata.sets}} Set(s) of {{setdata.reps}} Reps of  {{setdata.activityName}}</b>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngIf="setdata.type == 'GYM'&&setdata.weight > 0">
+                            <p class="set">
+                                <b>{{setdata.reps}} Reps | {{setdata.sets}} Sets | {{setdata.activityName}}</b>
+                                <span *ngIf="setdata.weight == 1"><b>| {{setdata.weight}} weight lb </b></span>
+                                <span *ngIf="setdata.weight > 1"><b>| {{setdata.weight}} weight lbs </b></span>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngIf="setdata.type == 'BODY_STATS'">
+                            <p class="set"><b>{{setdata.bStatName}} | {{setdata.bStatValue}} {{setdata.bStatUnits}}</b>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngIf="setdata.type == 'FOOD'">
+                            <p class="set"><b>{{setdata.activityName}}</b>
+                                <span *ngIf="setdata.protein.amount > 1"><b> | {{setdata.protein.amount}} Protein </b></span>
+                                <span *ngIf="setdata.fat.amount > 1"><b> | {{setdata.fat.amount}} Fat </b></span>
+                                <span *ngIf="setdata.water.amount > 1"><b> | {{setdata.water.amount}} Water </b></span>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngIf="setdata.type == 'INJURY'">
+                            <p class="set"> <b>{{setdata.bodyPart}} | {{setdata.rateOfCurrentPain}} Pain | {{setdata.rateThatItAffectsTraining}} AffectsTraining</b>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngIf="setdata.type == 'ILLNESS'">
+                            <p class="set"> <b>{{setdata.backStory}} |  {{setdata.rateThatItAffectsTraining}} AffectsTraining</b>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngIf="setdata.type == 'STATIONARY'">
+                            <p class="set"> <b>{{setdata.activityName}} Activity | {{ setdata.duration | miliseconds}} Duration</b>
+                            </p>
+                        </ng-container>
+
+                        <p class="system" [innerHTML]="setdata.description | safe: 'html'"></p>
+                        <p class="system" [innerHTML]="setdata.caption | safe: 'html'"></p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-list *ngIf="setdata.photo!=null" class="imagelist">
+                <img src="{{setdata.photo}}">
+            </ion-list>
+            <ion-row class="shadowlikecomment">
+                <ion-col>
+                    <p class="right">
+                        <img src="assets/img/like.png" (click)="like(setdata)" *ngIf="setdata.isLiked">
+                        <img src="assets/img/likegray.png" (click)="like(setdata)" *ngIf="!setdata.isLiked">
+                        <span>{{setdata.likes}}</span>
+                    </p>
+                </ion-col>
+                <ion-col col-3 (click)="opencomments(setdata)">
+                    <p class="rightfirst">
+                        <img src="assets/img/comment.png" *ngIf="setdata.comments>0">
+                        <img src="assets/img/commentgray.png" *ngIf="setdata.comments==0">
+                        <span>{{setdata.comments}}</span>
+                    </p>
+                </ion-col>
+                <ion-col col-4>
+
+                </ion-col>
+                <ion-col col-2 (click)="presentActionSheet(setdata)">
+                    <p class="options"><img src="assets/img/option.png" class="endtime"> </p>
+                </ion-col>
+            </ion-row>
+        </ng-container>
+    </ion-grid>
+</ng-container>

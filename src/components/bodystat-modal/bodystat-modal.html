@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <ion-toolbar color="primary">
+            <ion-title> {{title}}
+                <ion-icon name="close" (click)="closebodystat()" class="close" style="float:right;"></ion-icon>
+            </ion-title>
+        </ion-toolbar>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <p class="bodystat" *ngFor="let data of selectModal" (click)="selectType(data)">{{data.name}} </p>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,517 @@
+page-mynetworkfeed {
+    .scroll-content {
+        margin-top: 0px !important;
+    }
+    .toolbar-background {
+        //background: transparent;
+    }
+    .bar-button-md {
+        font-size: 1.9rem;
+    }
+    .noteslist {
+        margin-right: 2%;
+    }
+    .optionlist {
+        margin: 3px 2px!important;
+    }
+    .floatingmenus {
+        position: relative;
+    }
+    .feedviewscroll {
+        margin-top: 7px !important;
+    }
+    .floatingmenus1 {
+        position: absolute;
+        top: 19px;
+        right: 47px;
+        font-weight: bold;
+        color: #000;
+        width: 80px;
+    }
+    .feedlist img.selected {
+        border: 2px solid darkgrey;
+        border-radius: 50%;
+        box-shadow: 0 0 0px lightgray;
+        display: block;
+        margin: auto;
+    }
+    .fab-in-list {
+        background-color: #007cbb !important;
+    }
+    ion-fab[top] {
+        top: -55px!important;
+    }
+    .fab-light {
+        color: #fff!important;
+        background-color: rgba(250, 165, 0, 0) !important;
+        box-shadow: none;
+    }
+    .notification {}
+    .csk_tabs h3 {
+        text-align: center;
+        font-size: 18px;
+        margin: 10px;
+        margin-bottom: 0!important;
+    }
+    .csk_tabs h4 {
+        text-align: center;
+        font-size: 16px;
+        margin: 10px;
+        margin-top: 0!important;
+        padding-top: 5px!important;
+    }
+    .champians_list {
+        height: 150px;
+    }
+    .champians_list img {
+        height: 150px;
+        width: 100%;
+    }
+    .livestreaming h4 {
+        color: #dd2620!important;
+    }
+    .livestreaming h4 img {
+        width: 32px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+    .ripworkout {
+        margin-top: -12px;
+    }
+    .duration {
+        margin-top: -28px;
+        margin-bottom: 12px;
+    }
+    .xsets {
+        margin-top: -15px;
+    }
+    .workout {
+        font-size: 18px;
+        color: #565656;
+        margin-top: -10px;
+    }
+    .xibs {
+        margin-top: -10px;
+        line-height: 21px;
+        width: 100%;
+        color: #565656;
+        font-size: 15px;
+    }
+    .csk_tabs h2 {
+        text-align: center;
+        font-size: 38px;
+        color: #074880;
+    }
+    .rips {
+        color: #efa632;
+        font-size: 18px;
+        margin-top: 11px;
+    }
+    .csk_tabs ion-grid h1 {
+        text-align: center;
+        font-size: 34px;
+        padding: 28px 0;
+        background: #4bafeb;
+        border-bottom: solid 4px #2e8bd1;
+    }
+    .champians {
+        padding: 10px !important;
+        float: left;
+    }
+    .champians span {
+        color: #155183!important;
+    }
+    .csk_tabs .list .card {
+        margin: 0px 0px !important;
+        position: relative!important;
+        border: solid 1px #959595;
+    }
+    .csk_tabs h4 {
+        float: left;
+        width: 100%;
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+    .csk_tabs .list .join {
+        position: absolute;
+        top: 0!important;
+        width: 60px!important;
+    }
+    .csk_tabs .list .live {
+        position: absolute;
+        top: 0!important;
+        right: 0!important;
+        width: 40px!important;
+    }
+    .segment-ios .segment-button {
+        border-color: #efa632;
+    }
+    .segment-button {
+        color: #565656 !important;
+    }
+    .segment .segment-button.activated,
+    .segment .segment-button.segment-activated {
+        border-color: #bcbcbc !important;
+        border-bottom: solid 1px #ccc;
+        color: #565656!important;
+        background: #ededed;
+        height: 4.6rem !important;
+        font-size: 1.8rem !important;
+        line-height: 4.8rem !important;
+        padding: 0 !important;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .segment .segment-button {
+        height: 4.6rem;
+        font-size: 1.8rem;
+        line-height: 4.7rem;
+        padding: 0 !important;
+        border-bottom-color: #bcbcbc;
+        border-bottom-width: 1.3px;
+        color: #faa500!important;
+        background: #fff;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .csk_tabs .card ion-col {
+        text-align: center;
+    }
+    .csk_tabs .card ion-col img {
+        width: 60px!important;
+        margin: 0 auto;
+    }
+    .card {
+        margin: 0;
+        width: calc(100% - 0px);
+        box-shadow: 0px 0px 4px 1px rgb(195, 134, 29), 0 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 0px;
+        border-bottom: solid 1px rgb(205, 144, 41);
+        margin-bottom: 12px;
+    }
+    .banner {
+        padding: 0;
+    }
+    .banner-img {
+        padding: 0;
+        margin: 10px 0px -4px;
+        width: 100%;
+    }
+    .weeks {
+        padding-left: 0!important;
+        padding-top: 10px!important;
+        padding-bottom: 10px!important;
+    }
+    .activity {
+        width: 16.6%;
+        float: left;
+    }
+    .activity img {
+        width: 100%;
+    }
+    .activityheader {
+        padding: 10px 10px;
+    }
+    .cashleagues {
+        float: left!important;
+        font-size: 12px!important;
+        width: 33.3%!important;
+    }
+    .friendleagues {
+        float: left!important;
+        font-size: 12px!important;
+        width: 33.3%!important;
+    }
+    .winning_amount {
+        float: right!important;
+        font-size: 12px!important;
+        width: 33.3%!important;
+    }
+    .cashleagues b,
+    .winning_amount b,
+    .friendleagues b {
+        font-size: 16px!important;
+        width: 100%;
+        float: left;
+    }
+    .button-outline-md-light {
+        border-color: #b5b5b5;
+        color: #6d6a6a;
+        background-color: transparent;
+        width: 100%;
+    }
+    .twoactivity {
+        line-height: 50px;
+        color: #76d58a;
+        font-size: 19px;
+        text-align: right;
+    }
+    .button {
+        overflow: hidden;
+        margin: 0.4rem 0.0rem;
+        padding: 0 1.1em;
+        height: 3.9rem;
+        border-radius: 20px;
+        font-size: 28px;
+        padding-right: 9px;
+    }
+    .button-outline-light {
+        border-color: #b5b5b5;
+        color: #6d6a6a;
+        background-color: transparent;
+    }
+    .join img {
+        position: absolute;
+        width: 40px;
+        top: 6px
+    }
+    .outlines .csk_tabs ion-grid span {
+        width: 100% !important;
+        float: left;
+        padding: 13px;
+        font-size: 12px;
+        margin-top: 2px
+    }
+    .outlines .button {
+        overflow: hidden;
+        margin: 0.4rem 0.2rem;
+        padding: 0 0;
+        height: 2.9rem;
+        border-radius: 17px;
+        font-size: 0px;
+    }
+    .start {
+        float: left;
+        padding: 12px;
+        font-size: 11px;
+        margin-top: 12px!important;
+        overflow: inherit;
+        display: inherit;
+        text-overflow: inherit;
+        white-space: inherit;
+        width: 100%;
+        height: 2.5rem!important;
+        border-color: #565656;
+    }
+    .ibspadding {
+        padding: 0px!important;
+    }
+    .start span {
+        font-size: 11px !important;
+        line-height: 0px;
+        overflow: hidden!important;
+        display: flex!important;
+        text-overflow: inherit!important;
+        white-space: nowrap!important;
+        color: #29292a;
+        text-align: center;
+    }
+    .ibs {
+        margin-top: -4px;
+        line-height: 26px;
+        border-bottom: solid 1px #848484;
+        width: 90%;
+    }
+    .ibs b {
+        float: left;
+    }
+    .rep {
+        font-weight: bold;
+        color: #efa632;
+    }
+    .completed {
+        color: #36343d;
+        margin-top: 10px;
+        margin-bottom: 6px;
+    }
+    .like {
+        background: #ccc!important;
+    }
+    .likecomment {
+        background: #f5f5f5;
+        height: 55px;
+        margin-bottom: 12px;
+        box-shadow: inset 1px 3px 6px -2px #ccc;
+        border-top: solid 1px #ccc;
+    }
+    .likecomment img {
+        width: 40px;
+    }
+    .likecomment span {
+        position: absolute;
+        margin-top: 2px;
+        font-size: 21px;
+    }
+    .option {
+        float: right;
+    }
+    .date {
+        margin-top: 14px;
+    }
+    .likeactivity {
+        position: absolute;
+        margin-left: -39px;
+    }
+    .commentactivity {
+        position: absolute;
+        margin-left: -37px;
+    }
+    .likecomment span {
+        position: absolute;
+        left: 43px;
+        font-size: 21px;
+        top: 15px;
+    }
+    .system {
+        font-size: 16px;
+        color: #a99f9f;
+        margin-top: 4px;
+        margin-bottom: 0;
+    }
+    .label {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .hadtaken {
+        margin-top: -5px;
+        margin-bottom: 8px;
+    }
+    .cher {
+        font-size: 17px;
+        font-weight: normal;
+        color: #858585;
+        white-space: initial;
+    }
+    .activitymember {
+        font-size: 12px !important;
+        color: #c2c2c2 !important;
+    }
+    .feed img {
+        position: absolute;
+        right: 7px;
+        top: 12px;
+        font-size: 15px;
+        color: #858585 !important;
+        width: 12%;
+    }
+    .datetime {
+        font-size: 17px;
+        color: #858585 !important;
+    }
+    .list .item-block .item-inner {
+        border-bottom: solid 0px;
+    }
+    .messagelist {
+        background: #f2f2f2!important;
+    }
+    .feedview {
+        margin-top: 1px;
+    }
+    .daliyactivity {
+        font-size: 10px;
+        margin-top: 16px;
+    }
+    ion-scroll {
+        height: 58px!important;
+        width: 100vw;
+    }
+    .feedlist {
+        margin-top: 1px;
+    }
+    ion-scroll[scrollX] {
+        white-space: nowrap;
+        .scroll-item {
+            display: inline-block;
+        }
+    }
+    .action-sheet-md .action-sheet-icon {
+        margin: 0px 10px 0 0!important;
+        width: 2.7rem!important;
+        font-size: 2.7rem!important;
+    }
+    .item.item-block .item-inner {
+        border-bottom: 1px solid rgba(222, 222, 222, 0)!important;
+    }
+    .list_view .item:nth-child(odd) {
+        background: #f2f2f2!important;
+    }
+    .list_view .item:nth-child(even) {
+        background: #fff!important;
+    }
+    .join img {
+        position: absolute;
+        width: 39px;
+        top: 9px;
+        border-radius: 100px;
+        height: 39px;
+        left: 6px;
+    }
+    .scroll-zoom-wrapper {
+        margin-left: 2%;
+        width: 100%;
+    }
+    .situp1 {
+        text-align: center;
+        border-radius: 15px;
+        border: solid 1px;
+        padding: 2px;
+        //  height: 40px;
+        color: #7b7a7a;
+        margin: 3px;
+    }
+    .duration {
+        margin: 0;
+    }
+    .situp1 span {
+        text-align: center;
+        font-weight: bold;
+    }
+    .join img {
+        position: absolute;
+        width: 39px;
+        top: 9px;
+        border-radius: 100px;
+        height: 39px;
+        left: 6px;
+    }
+    .plan {
+        font-size: 17px;
+        margin-top: 14px;
+        margin-bottom: 7px;
+    }
+    .mint {
+        color: #565656;
+    }
+    .hours {
+        float: right;
+        background: #ccc;
+        padding: 5px 9px;
+        border-radius: 7px;
+        margin-top: 8px;
+    }
+    .optionlist {
+        margin: 3px 2px!important;
+    }
+    .duration {
+        margin-top: 1px!important;
+        margin-bottom: -1px!important;
+    }
+    .feedviewscroll img {
+        width: 50px;
+        height: 50px;
+    }
+    .tickimage {
+        position: absolute;
+        left: 0px;
+    }
+    .activitylist {
+        position: relative;
+        width: 15%;
+    }
+    .toolbar-title {
+        text-align: left !important;
+    }
+    .toolbar-title {
+        padding: 0 55px;
+    }
+}

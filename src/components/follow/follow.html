@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>{{title}}
+            <ion-icon name="close" (click)="closeModal()" class="close"></ion-icon>
+        </ion-title>
+        <ion-buttons end>
+
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="notification_div">
+
+    <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+    <h4 class="stable" *ngIf="!isloading&&userList.length==0">No data</h4>
+    <ion-item *ngFor="let data of userList">
+        <profile-picture [activity]="data" [currentUser]="currentUser" [index]="i">
+        </profile-picture>
+        <h2>{{data.username}}</h2>
+        <ion-avatar item-right class="followright" *ngIf="id==currentUser.id">
+            <img *ngIf="data.isFollowed==true" (click)="unfollowUser(data)" src="assets/img/right.png">
+            <img *ngIf="data.isFollowed==false" (click)="followUser(data)" src="assets/img/plusgray.png">
+        </ion-avatar>
+    </ion-item>
+
+
+</ion-content>

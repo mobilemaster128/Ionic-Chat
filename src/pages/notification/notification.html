@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'NOTIFICATIONS' | translate }}</ion-title>
+        <ion-buttons end>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="csk_tabs notification_div">
+    <ion-spinner *ngIf="isloading" name="bubbles"></ion-spinner>
+    <ion-item *ngFor="let data of notificationList">
+        <profile-picture [activity]="data" [currentUser]="currentUser" [index]="i">
+        </profile-picture>
+        <p class="time">{{data.receivedDate | amTimeAgo}}</p>
+        <h2>{{data.content}}</h2>
+    </ion-item>
+
+    <h4 class="stable" *ngIf="!isloading&&notificationList.length==0">No Data</h4>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="hasMoreData">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,1 @@
+cordova build android --release --prod -- --keystore="release.keystore" --storePassword=android --alias=release
